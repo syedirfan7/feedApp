@@ -5,25 +5,13 @@
  */
 
 import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  RefreshControl,
-  FlatList
-  } from 'react-native';
+import {Text,  View,  ScrollView,  RefreshControl,  FlatList  } from 'react-native';
+import styles from './style';
 import xmldom from 'xmldom';
+
 //import XMLParser  from 'react-xml-parser';
 // import xmlParser from 'xml2js'
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 window.DOMParser = require('xmldom').DOMParser;
 export default class App extends Component {
   constructor(props){
@@ -76,9 +64,16 @@ renderItem = ({ item }) => {
    // const { id, tid, name, description, imageUrl } = item;
   //console.log(item[0]);
     return (
-      <View>
-      <Text>{item.childNodes[1].firstChild.nodeValue} </Text>
-      {/* <Text>{item.childNodes[5].firstChild.nodeValue} </Text> */}
+      <View style={styles.container} >
+       
+          {
+            item.childNodes[5].firstChild.nodeValue.indexOf('<a')>-1 &&
+               <View style={styles.card}>
+              <Text >{item.childNodes[1].firstChild.nodeValue}</Text>
+              <Text>{item.childNodes[5].firstChild.nodeValue} </Text>  
+              </View>    
+          }
+      
       </View>
           )
   }
@@ -104,21 +99,3 @@ renderItem = ({ item }) => {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
