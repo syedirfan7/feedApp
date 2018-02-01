@@ -5,27 +5,34 @@ var styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'yellow',
+    backgroundColor: 'azure',
+  },
+  label:{
+color:'black'
   },
   card:{
-   // backgroundColor:'yellow',
-    height:100,
+    backgroundColor:'floralwhite',
+    height:325,
     width:'90%',
     paddingBottom:10,
-    borderBottomColor:'black',
-    borderBottomWidth:5 ,
+    borderBottomColor:'grey',
+    borderBottomWidth:1 ,
     //textAlign:'left'
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  title:{
+    textAlign:'center',
+    color:'black'
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  titleBar:{
+    backgroundColor:'azure'
   },
+  data:{
+    paddingBottom:120,
+    backgroundColor:'azure'
+  },
+  description:{
+  paddingTop:10
+  }
 }); 
 
 export default styles;
